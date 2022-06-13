@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('http://fonts.cdnfonts.com/css/itc-benguiat-std');
+
+*{
+  font-family: 'ITC Benguiat Std', sans-serif;
+}
