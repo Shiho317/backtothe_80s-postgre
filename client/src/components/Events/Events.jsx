@@ -6,7 +6,7 @@ const Events = () => {
   const [eventsData, setEventsData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/events").then((res) => {
+    axios.get("http://localhost:8000/api/event/events").then((res) => {
       setEventsData(res.data);
     });
   }, []);

@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 const router = require('./router/router');
 const mysql = require('mysql')
 const bodyparser = require('body-parser')
+const eventRouter = require('./router/event')
+const userRouter = require('./router/user')
 
 dotenv.config();
 app.use(express())
@@ -21,7 +23,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', router)
+app.use('/api/event', eventRouter)
+app.use('/api/user', userRouter)
 
 const PORT = process.env.PORT || 8000;
 
