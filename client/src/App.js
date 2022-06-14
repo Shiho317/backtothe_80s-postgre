@@ -17,10 +17,9 @@ export const AppContext = createContext(null);
 function App() {
 
   const myStorage = window.sessionStorage;
-  const currUser = myStorage.getItem("user");
-
+  
   return (
-    <AppContext.Provider value={{currUser, myStorage}}>
+    <AppContext.Provider value={{myStorage}}>
       <Router>
         <Routes>
           <Route path='/' element={<Home/>}/>

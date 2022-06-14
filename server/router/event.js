@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const db = require("../services/db");
+const { v4: uuidv4 } = require('uuid');
 
 router.get("/events", (req, res) => {
   db.query("SELECT * FROM events", (err, result) => {
@@ -11,6 +12,7 @@ router.get("/events", (req, res) => {
 });
 
 router.post("/create", (req, res) => {
+  const id = uuidv4();
   const title = req.body.title;
   const sub = req.body.subtitle;
   const date = req.body.date;
@@ -23,8 +25,8 @@ router.post("/create", (req, res) => {
   const amount = 1;
 
   db.query(
-    "INSERT INTO events (title, sub, date, time, location, participants, amount, price, image, host) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    [title, sub, date, time, location, participants, amount, price, image, host],
+    "INSERT INTO events (id, title, sub, date, time, location, participants, amount, price, image, host) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [id, title, sub, date, time, location, participants, amount, price, image, host],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -66,6 +68,27 @@ router.post("/getevent", (req, res) => {
       console.log(err)
     }
     res.send(result)
+  })
+})
+
+router.post("/edit", (req, res) => {
+
+  const id = req.body.id;
+  const title = req.body.title;
+  const sub = req.body.subtitle;
+  const date = req.body.date;
+  const time = req.body.time;
+  const location = req.body.location;
+  const participants = req.body.participants;
+  const price = req.body.price;
+  const image = req.body.image;
+
+  db.query('UPDATE events SET title = ?, sub = ?, date = ?, time = ?, location = ?, participants = ?, price = ?, image = ? WHERE id = ?', [title, sub, date, time, location, participants, price, image, id], (err, result) => {
+    if(err){
+      console.log(err)
+    }else{
+      res.sendStatus(200).json();
+    }
   })
 })
 

@@ -2,20 +2,23 @@ import axios from "axios";
 import React, { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 
-const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
-  const [eventTitle, setEventTitle] = useState("");
-  const [eventDesc, setEventDesc] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [eventTime, setEventTime] = useState("");
-  const [eventLocation, setEventLocation] = useState("");
-  const [eventParticipants, setEvevntParticipants] = useState();
-  const [eventPrice, setEventPrice] = useState();
-  const [eventImage, setEventImage] = useState("");
+const EditEvent = ({ setEditDetails, event, getEvent }) => {
+  const [eventTitle, setEventTitle] = useState(event.title);
+  const [eventDesc, setEventDesc] = useState(event.sub);
+  const [eventDate, setEventDate] = useState(event.date);
+  const [eventTime, setEventTime] = useState(event.time);
+  const [eventLocation, setEventLocation] = useState(event.location);
+  const [eventParticipants, setEvevntParticipants] = useState(
+    event.participants
+  );
+  const [eventPrice, setEventPrice] = useState(event.price);
+  const [eventImage, setEventImage] = useState(event.image);
 
-  const addEventsHandler = async (e) => {
+  const editHandler = async (e) => {
     e.preventDefault();
 
-    const newEvent = {
+    const editedEvent = {
+      id: event.id,
       title: eventTitle,
       subtitle: eventDesc,
       date: eventDate,
@@ -24,30 +27,34 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
       participants: eventParticipants,
       price: eventPrice,
       image: eventImage,
-      host: user.email,
     };
 
     await axios
-      .post("http://localhost:8000/api/event/create", newEvent)
+      .post("http://localhost:8000/api/event/edit", editedEvent)
       .then((res) => {
-        getUserEvents();
-        setOpenModal(false);
+        setEditDetails(false);
+        getEvent()
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   return (
-    <div className="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center bg-gray-200/50">
+    <div className="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center bg-gray-400/70">
       <div
         className="absolute top-28 right-96 text-white text-5xl cursor-pointer"
-        onClick={() => setOpenModal(false)}
+        onClick={() => setEditDetails(false)}
       >
         <IoIosCloseCircle />
       </div>
       <form
         className="grid grid-rows-7 grid-cols-4 gap-2 w-1/3 p-3"
-        onSubmit={addEventsHandler}
+        onSubmit={editHandler}
       >
-        <label id="title">Title:</label>
+        <label id="title" className="text-white">
+          Title:
+        </label>
         <input
           type="text"
           name="title"
@@ -56,17 +63,22 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventTitle}
           onChange={(e) => setEventTitle(e.target.value)}
         />
-        <label id="desc">Description:</label>
+        <label id="desc" className="text-white">
+          Description:
+        </label>
         <textarea
           type="text"
           name="desc"
           className="h-20 outline-none px-1 col-span-3"
           placeholder="Event Description"
+          value={eventDesc}
           onChange={(e) => setEventDesc(e.target.value)}
           rows={10}
           cols={15}
         />
-        <label id="date">Date:</label>
+        <label id="date" className="text-white">
+          Date:
+        </label>
         <input
           type="date"
           name="date"
@@ -74,7 +86,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
         />
-        <label id="time">Time:</label>
+        <label id="time" className="text-white">
+          Time:
+        </label>
         <input
           type="time"
           name="time"
@@ -82,7 +96,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
         />
-        <label id="location">Location:</label>
+        <label id="location" className="text-white">
+          Location:
+        </label>
         <input
           type="text"
           name="location"
@@ -91,7 +107,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventLocation}
           onChange={(e) => setEventLocation(e.target.value)}
         />
-        <label id="participants">Participants:</label>
+        <label id="participants" className="text-white">
+          Participants:
+        </label>
         <input
           type="text"
           name="participants"
@@ -99,7 +117,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventParticipants}
           onChange={(e) => setEvevntParticipants(e.target.value)}
         />
-        <label id="price">Price:</label>
+        <label id="price" className="text-white">
+          Price:
+        </label>
         <input
           type="number"
           name="price"
@@ -108,7 +128,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventPrice}
           onChange={(e) => setEventPrice(e.target.value)}
         />
-        <label id="image">Image:</label>
+        <label id="image" className="text-white">
+          Image:
+        </label>
         <input
           type="url"
           name="image"
@@ -121,11 +143,11 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           type="submit"
           className="bg-white text-black w-1/2 mt-4 m-auto h-10 col-span-4 bg-none border border-black hover:bg-red-500"
         >
-          Add Event
+          Edit Event
         </button>
       </form>
     </div>
   );
 };
 
-export default NewEvent;
+export default EditEvent;

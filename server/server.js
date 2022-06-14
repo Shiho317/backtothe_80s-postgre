@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const bodyparser = require('body-parser')
 const eventRouter = require('./router/event')
 const userRouter = require('./router/user')
+const peopleRouter = require('./router/people')
 
 dotenv.config();
 app.use(express())
@@ -23,6 +24,7 @@ app.use(function (req, res, next) {
 
 app.use('/api/event', eventRouter)
 app.use('/api/user', userRouter)
+app.use('/api/people', peopleRouter)
 
 const PORT = process.env.PORT || 8000;
 

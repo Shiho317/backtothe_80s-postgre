@@ -7,15 +7,16 @@ import { MdPostAdd } from "react-icons/md";
 import NewEvent from "./NewEvent";
 
 const Account = () => {
-  const { myStorage, currUser } = useContext(AppContext);
+  const { myStorage } = useContext(AppContext);
   const [userEvents, setUserEvents] = useState([]);
+  
+  const currUser = myStorage.getItem("user");
   const user = JSON.parse(currUser);
 
   const getUserEvents = async () => {
     await axios
       .post("http://localhost:8000/api/event/userevents", user)
       .then((res) => {
-        console.log(res.data);
         setUserEvents(res.data);
       })
       .catch((err) => {
@@ -79,6 +80,7 @@ const Account = () => {
           getUserEvents={getUserEvents}
         />
       )}
+      
     </div>
   );
 };

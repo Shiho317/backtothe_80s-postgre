@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "./Card";
 
 const Events = () => {
@@ -21,6 +22,14 @@ const Events = () => {
           <Card data={data} key={data.id} />
         ))}
       </ul>
+      <div className='fixed -translate-y-1/2 top-1/2 right-10 flex flex-col items-center justify-center gap-6'>
+        <Link to='/login'>
+          <button className='bg-none border border-black bg-white py-2 w-36 text-xl hover:bg-red-500'>Host</button>
+        </Link>
+        <Link to='/'>
+          <button className='bg-none border border-black bg-white py-2 w-36 text-xl hover:bg-red-500'>Home</button>
+        </Link>
+      </div>
     </div>
   );
 };
