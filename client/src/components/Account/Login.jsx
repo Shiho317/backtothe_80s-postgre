@@ -22,8 +22,14 @@ const Login = () => {
     await axios
       .post("http://localhost:8000/api/user/login", loginUser)
       .then((res) => {
-        myStorage.setItem("user", res.data);
-        navigate("/account");
+        const user = res.data[0]
+        const myAccount = {
+          id: user.id,
+          name: user.name,
+          email: user.email
+        }
+        myStorage.setItem("user", JSON.stringify(myAccount));
+        navigate(`/account/${user.id}`);
       })
       .catch((err) => {
         console.log(err);
@@ -66,7 +72,6 @@ const Login = () => {
             Sign Up
           </button>
         </Link>
-
         <Link to="/">
           <button className="bg-none border border-black bg-white py-2 w-36 text-xl hover:bg-red-500">
             Home

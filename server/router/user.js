@@ -1,18 +1,21 @@
 const router = require("express").Router();
 const db = require("../services/db");
+const { v4: uuidv4 } = require('uuid');
 
 router.post("/register", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
+  const id = uuidv4();
 
   db.query(
-    "INSERT INTO user (name, email, password) VALUES (?, ?, ?)",
-    [name, email, password],
+    "INSERT INTO user (id, name, email, password) VALUES (?, ?, ?, ?)",
+    [id, name, email, password],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
+        console.log('success')
         res.sendStatus(200).json();
       }
     }
