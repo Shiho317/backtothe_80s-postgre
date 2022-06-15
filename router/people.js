@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const db = require("../services/db");
-const { v4: uuidv4 } = require("uuid");
 
 router.post("/join", (req, res) => {
   const id = Math.floor(Math.random() * 1000);
