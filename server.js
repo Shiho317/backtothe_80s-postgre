@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv");
-const bodyparser = require("body-parser");
 const eventRouter = require("./router/event");
 const userRouter = require("./router/user");
 const peopleRouter = require("./router/people");
@@ -10,8 +9,6 @@ const path = require("path");
 
 dotenv.config();
 app.use(express.json());
-app.use(cors());
-app.use(bodyparser.json());
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -25,6 +22,8 @@ app.use(function (req, res, next) {
 app.use("/api/event", eventRouter);
 app.use("/api/user", userRouter);
 app.use("/api/people", peopleRouter);
+
+app.use(cors());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
