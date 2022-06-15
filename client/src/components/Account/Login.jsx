@@ -20,14 +20,14 @@ const Login = () => {
     };
 
     await axios
-      .post("http://localhost:8000/api/user/login", loginUser)
+      .post("/api/user/login", loginUser)
       .then((res) => {
-        const user = res.data[0]
+        const user = res.data[0];
         const myAccount = {
           id: user.id,
           name: user.name,
-          email: user.email
-        }
+          email: user.email,
+        };
         myStorage.setItem("user", JSON.stringify(myAccount));
         navigate(`/account/${user.id}`);
       })

@@ -19,7 +19,7 @@ const Signup = () => {
     };
 
     await axios
-      .post("http://localhost:8000/api/user/register", registerUser)
+      .post("/api/user/register", registerUser)
       .then((res) => {
         alert("You are successfully registered.");
         setTimeout(() => {

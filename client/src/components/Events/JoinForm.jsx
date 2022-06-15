@@ -13,14 +13,14 @@ const JoinForm = ({ setOpenModal, event, getEventInfo }) => {
       username,
       useremail: userEmail,
       event: event.id,
-      amount: event.amount + 1
+      amount: event.amount + 1,
     };
 
     await axios
-      .post("http://localhost:8000/api/people/join", joinInfo)
+      .post("/api/people/join", joinInfo)
       .then((res) => {
         setOpenModal(false);
-        getEventInfo()
+        getEventInfo();
       })
       .catch((err) => {
         console.log(err);
@@ -35,10 +35,19 @@ const JoinForm = ({ setOpenModal, event, getEventInfo }) => {
       >
         <IoIosCloseCircle />
       </div>
-      <form className="flex flex-col gap-2 w-11/12 md:w-2/3 lg:w-1/3 lg:p-3" onSubmit={joinHandler}>
-        <label id="event" className="text-white">Event Title:</label>
-        <h3 className="h-10 px-1 text-lg flex items-center bg-gray-200/50">{event.title}</h3>
-        <label id="username" className="text-white">User Name:</label>
+      <form
+        className="flex flex-col gap-2 w-11/12 md:w-2/3 lg:w-1/3 lg:p-3"
+        onSubmit={joinHandler}
+      >
+        <label id="event" className="text-white">
+          Event Title:
+        </label>
+        <h3 className="h-10 px-1 text-lg flex items-center bg-gray-200/50">
+          {event.title}
+        </h3>
+        <label id="username" className="text-white">
+          User Name:
+        </label>
         <input
           type="text"
           name="username"
@@ -47,7 +56,9 @@ const JoinForm = ({ setOpenModal, event, getEventInfo }) => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label id="useremail" className="text-white">User Email:</label>
+        <label id="useremail" className="text-white">
+          User Email:
+        </label>
         <input
           type="text"
           name="useremail"

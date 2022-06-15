@@ -30,10 +30,10 @@ const EditEvent = ({ setEditDetails, event, getEvent }) => {
     };
 
     await axios
-      .post("http://localhost:8000/api/event/edit", editedEvent)
+      .post("/api/event/edit", editedEvent)
       .then((res) => {
         setEditDetails(false);
-        getEvent()
+        getEvent();
       })
       .catch((err) => {
         console.log(err);

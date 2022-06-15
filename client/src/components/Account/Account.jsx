@@ -9,13 +9,13 @@ import NewEvent from "./NewEvent";
 const Account = () => {
   const { myStorage } = useContext(AppContext);
   const [userEvents, setUserEvents] = useState([]);
-  
+
   const currUser = myStorage.getItem("user");
   const user = JSON.parse(currUser);
 
   const getUserEvents = async () => {
     await axios
-      .post("http://localhost:8000/api/event/userevents", user)
+      .post("/api/event/userevents", user)
       .then((res) => {
         setUserEvents(res.data);
       })
@@ -80,7 +80,6 @@ const Account = () => {
           getUserEvents={getUserEvents}
         />
       )}
-      
     </div>
   );
 };

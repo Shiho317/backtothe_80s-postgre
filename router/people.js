@@ -32,15 +32,15 @@ router.post("/join", (req, res) => {
   );
 });
 
-router.post('/getlist', (req, res) => {
-  const event = req.body.event
+router.post("/getlist", (req, res) => {
+  const event = req.body.event;
 
-  db.query('SELECT * FROM people WHERE event = ?', [event], (err, result) => {
-    if(err){
-      console.log(err)
+  db.query("SELECT * FROM people WHERE event = ?", [event], (err, result) => {
+    if (err) {
+      console.log(err);
     }
     res.send(result);
-  })
-})
+  });
+});
 
 module.exports = router;

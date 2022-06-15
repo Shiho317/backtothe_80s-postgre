@@ -9,22 +9,22 @@ const Desc = () => {
   const params = useParams();
   const [event, setEvent] = useState([]);
 
-  const getEventInfo = async() => {
+  const getEventInfo = async () => {
     const clickedEvent = {
       id: params.id,
     };
     await axios
-      .post("http://localhost:8000/api/event/getevent", clickedEvent)
+      .post("/api/event/getevent", clickedEvent)
       .then((res) => {
         setEvent(res.data[0]);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   useEffect(() => {
-    getEventInfo()
+    getEventInfo();
     // eslint-disable-next-line
   }, [params]);
 
@@ -42,7 +42,9 @@ const Desc = () => {
         <div className="relative w-11/12 bg-white/80 rounded-md overflow-hidden md:max-w-lg m-auto lg:max-w-2xl">
           <img src={event.image} alt="event-pic" />
           <div className="p-2">
-            <h1 className="text-xl md:text-3xl underline text-center">{event.title}</h1>
+            <h1 className="text-xl md:text-3xl underline text-center">
+              {event.title}
+            </h1>
             <p>Desc: {event.sub}</p>
             <p>Date: {event.date}</p>
             <p>Start: {event.time}</p>
@@ -61,7 +63,13 @@ const Desc = () => {
           </div>
         </div>
       )}
-      {openModal && event && <JoinForm setOpenModal={setOpenModal} event={event} getEventInfo={getEventInfo} />}
+      {openModal && event && (
+        <JoinForm
+          setOpenModal={setOpenModal}
+          event={event}
+          getEventInfo={getEventInfo}
+        />
+      )}
     </div>
   );
 };

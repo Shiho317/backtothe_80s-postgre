@@ -28,7 +28,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
     };
 
     await axios
-      .post("http://localhost:8000/api/event/create", newEvent)
+      .post("/api/event/create", newEvent)
       .then((res) => {
         getUserEvents();
         setOpenModal(false);
@@ -47,7 +47,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
         className="grid grid-rows-7 grid-cols-4 gap-2 w-11/12 md:w-2/3 lg:w-1/3 lg:p-3"
         onSubmit={addEventsHandler}
       >
-        <label id="title" className="text-white">Title:</label>
+        <label id="title" className="text-white">
+          Title:
+        </label>
         <input
           type="text"
           name="title"
@@ -56,7 +58,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventTitle}
           onChange={(e) => setEventTitle(e.target.value)}
         />
-        <label id="desc" className="text-white">Description:</label>
+        <label id="desc" className="text-white">
+          Description:
+        </label>
         <textarea
           type="text"
           name="desc"
@@ -66,7 +70,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           rows={10}
           cols={15}
         />
-        <label id="date" className="text-white">Date:</label>
+        <label id="date" className="text-white">
+          Date:
+        </label>
         <input
           type="date"
           name="date"
@@ -74,7 +80,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
         />
-        <label id="time" className="text-white">Time:</label>
+        <label id="time" className="text-white">
+          Time:
+        </label>
         <input
           type="time"
           name="time"
@@ -82,7 +90,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
         />
-        <label id="location" className="text-white">Location:</label>
+        <label id="location" className="text-white">
+          Location:
+        </label>
         <input
           type="text"
           name="location"
@@ -91,7 +101,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventLocation}
           onChange={(e) => setEventLocation(e.target.value)}
         />
-        <label id="participants" className="text-white">Participants:</label>
+        <label id="participants" className="text-white">
+          Participants:
+        </label>
         <input
           type="text"
           name="participants"
@@ -99,7 +111,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventParticipants}
           onChange={(e) => setEvevntParticipants(e.target.value)}
         />
-        <label id="price" className="text-white">Price:</label>
+        <label id="price" className="text-white">
+          Price:
+        </label>
         <input
           type="number"
           name="price"
@@ -108,7 +122,9 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventPrice}
           onChange={(e) => setEventPrice(e.target.value)}
         />
-        <label id="image" className="text-white">Image:</label>
+        <label id="image" className="text-white">
+          Image:
+        </label>
         <input
           type="url"
           name="image"
