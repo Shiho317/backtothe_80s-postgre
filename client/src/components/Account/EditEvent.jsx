@@ -18,7 +18,7 @@ const EditEvent = ({ setEditDetails, event, getEvent }) => {
     e.preventDefault();
 
     const editedEvent = {
-      id: event.id,
+      id: event.event_id,
       title: eventTitle,
       subtitle: eventDesc,
       date: eventDate,

@@ -48,7 +48,7 @@ const ShowList = ({ setShowList, event, user }) => {
             </tr>
             {peopleList &&
               peopleList.map((list, index) => (
-                <tr>
+                <tr key={index + 1}>
                   <td className="border">{index + 1}</td>
                   <td className="border">{list.username}</td>
                   <td className="border">{list.useremail}</td>

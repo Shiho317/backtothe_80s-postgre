@@ -55,7 +55,6 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           name="title"
           className="h-10 outline-none px-1 col-span-3"
           placeholder="Event Title"
-          value={eventTitle}
           onChange={(e) => setEventTitle(e.target.value)}
         />
         <label id="desc" className="text-white">
@@ -77,7 +76,6 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           type="date"
           name="date"
           className="h-10 outline-none px-1 col-span-1"
-          value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
         />
         <label id="time" className="text-white">
@@ -87,7 +85,6 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           type="time"
           name="time"
           className="h-10 outline-none px-1 col-span-1"
-          value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
         />
         <label id="location" className="text-white">
@@ -98,7 +95,6 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           name="location"
           className="h-10 outline-none px-1 col-span-3"
           placeholder="Event Location"
-          value={eventLocation}
           onChange={(e) => setEventLocation(e.target.value)}
         />
         <label id="participants" className="text-white">
@@ -108,7 +104,6 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           type="text"
           name="participants"
           className="h-10 outline-none px-1 col-span-1"
-          value={eventParticipants}
           onChange={(e) => setEvevntParticipants(e.target.value)}
         />
         <label id="price" className="text-white">
@@ -119,7 +114,6 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           name="price"
           className="h-10 outline-none px-1 col-span-1"
           placeholder="30 *Number(C$)"
-          value={eventPrice}
           onChange={(e) => setEventPrice(e.target.value)}
         />
         <label id="image" className="text-white">
@@ -130,7 +124,6 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           name="image"
           className="h-10 outline-none px-1 col-span-3"
           placeholder="Image Url"
-          value={eventImage}
           onChange={(e) => setEventImage(e.target.value)}
         />
         <button

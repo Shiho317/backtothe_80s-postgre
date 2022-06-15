@@ -1,10 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../App";
 import Card from "./Card";
 
 const Events = () => {
   const [eventsData, setEventsData] = useState([]);
+  const { myStorage } = useContext(AppContext);
+  const currUser = myStorage.getItem("user");
+  const user = JSON.parse(currUser);
 
   useEffect(() => {
     axios.get("/api/event/events").then((res) => {
@@ -25,7 +29,7 @@ const Events = () => {
         ))}
       </ul>
       <div className="fixed gap-2 bottom-2 right-2 flex flex-col justify-center lg:gap-6 lg:top-1/2 lg:-translate-y-1/2 lg:right-10">
-        <Link to="/login">
+        <Link to={currUser === null ? "/login" : `/account/${user.id}`}>
           <button className="bg-none border border-black bg-white py-1 w-24 text-lg lg:text-xl hover:bg-red-500 lg:py-2 lg:w-36">
             Host
           </button>

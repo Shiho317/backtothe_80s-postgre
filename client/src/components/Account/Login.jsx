@@ -24,12 +24,12 @@ const Login = () => {
       .then((res) => {
         const user = res.data[0];
         const myAccount = {
-          id: user.id,
+          id: user.user_id,
           name: user.name,
           email: user.email,
         };
         myStorage.setItem("user", JSON.stringify(myAccount));
-        navigate(`/account/${user.id}`);
+        navigate(`/account/${user.user_id}`);
       })
       .catch((err) => {
         console.log(err);

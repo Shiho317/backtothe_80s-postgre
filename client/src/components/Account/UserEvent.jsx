@@ -5,7 +5,7 @@ import { RiListSettingsLine } from "react-icons/ri";
 const UserEvent = ({ event, user }) => {
   const navigate = useNavigate();
   const onClickHandler = () => {
-    navigate(`/events-manage/${user.id}/${event.id}`);
+    navigate(`/events-manage/${user.id}/${event.event_id}`);
   };
 
   const newDate = new Date();

@@ -30,7 +30,7 @@ const Card = ({ data }) => {
         <p className="text-sm text-gray-400">{data.amount} people join</p>
       </div>
       <Link
-        to={`/events-data/${data.id}`}
+        to={`/events-data/${data.event_id}`}
         className="absolute bottom-2 right-2 text-gray-400"
       >
         <button className="text-xl bg-none border-none hover:text-red-500 lg:text-2xl">

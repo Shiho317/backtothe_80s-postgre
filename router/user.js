@@ -7,19 +7,20 @@ router.post("/register", async (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
-  const id = uuidv4();
+  const user_id = uuidv4();
+  const id = Math.floor(Math.random() * 1000)
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
+  console.log(hashedPassword)
 
   db.query(
-    "INSERT INTO user (id, name, email, password) VALUES (?, ?, ?, ?)",
-    [id, name, email, hashedPassword],
+    "INSERT INTO users (user_id, name, email, password, id) VALUES ($1, $2, $3, $4, $5)",
+    [user_id, name, email, hashedPassword, id],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("success");
         res.sendStatus(200).json();
       }
     }
@@ -30,15 +31,15 @@ router.post("/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  db.query("SELECT * FROM user WHERE email = ?", [email], (err, result) => {
+  db.query("SELECT * FROM users WHERE email = $1", [email], (err, result) => {
     if (err) {
       console.log(err);
     } else {
-      const validPassword = bcrypt.compare(password, result[0].password);
+      const validPassword = bcrypt.compare(password, result.rows[0].password);
       if (!validPassword) {
         res.status(400).json("Wrong email or password.");
       }
-      res.send(result);
+      res.send(result.rows);
     }
   });
 });
