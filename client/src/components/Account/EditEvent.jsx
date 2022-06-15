@@ -43,13 +43,13 @@ const EditEvent = ({ setEditDetails, event, getEvent }) => {
   return (
     <div className="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center bg-gray-400/70">
       <div
-        className="absolute top-28 right-96 text-white text-5xl cursor-pointer"
+        className="absolute top-4 right-4 lg:top-28 lg:right-96 text-white text-5xl cursor-pointer"
         onClick={() => setEditDetails(false)}
       >
         <IoIosCloseCircle />
       </div>
       <form
-        className="grid grid-rows-7 grid-cols-4 gap-2 w-1/3 p-3"
+        className="grid grid-rows-7 grid-cols-4 gap-2 w-11/12 md:w-2/3 lg:w-1/3 lg:p-3"
         onSubmit={editHandler}
       >
         <label id="title" className="text-white">

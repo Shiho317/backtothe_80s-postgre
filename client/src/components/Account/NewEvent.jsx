@@ -36,18 +36,18 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
   };
 
   return (
-    <div className="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center bg-gray-200/50">
+    <div className="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center bg-gray-400/70">
       <div
-        className="absolute top-28 right-96 text-white text-5xl cursor-pointer"
+        className="absolute top-4 right-4 lg:top-28 lg:right-96 text-white text-5xl cursor-pointer"
         onClick={() => setOpenModal(false)}
       >
         <IoIosCloseCircle />
       </div>
       <form
-        className="grid grid-rows-7 grid-cols-4 gap-2 w-1/3 p-3"
+        className="grid grid-rows-7 grid-cols-4 gap-2 w-11/12 md:w-2/3 lg:w-1/3 lg:p-3"
         onSubmit={addEventsHandler}
       >
-        <label id="title">Title:</label>
+        <label id="title" className="text-white">Title:</label>
         <input
           type="text"
           name="title"
@@ -56,7 +56,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventTitle}
           onChange={(e) => setEventTitle(e.target.value)}
         />
-        <label id="desc">Description:</label>
+        <label id="desc" className="text-white">Description:</label>
         <textarea
           type="text"
           name="desc"
@@ -66,7 +66,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           rows={10}
           cols={15}
         />
-        <label id="date">Date:</label>
+        <label id="date" className="text-white">Date:</label>
         <input
           type="date"
           name="date"
@@ -74,7 +74,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
         />
-        <label id="time">Time:</label>
+        <label id="time" className="text-white">Time:</label>
         <input
           type="time"
           name="time"
@@ -82,7 +82,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
         />
-        <label id="location">Location:</label>
+        <label id="location" className="text-white">Location:</label>
         <input
           type="text"
           name="location"
@@ -91,7 +91,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventLocation}
           onChange={(e) => setEventLocation(e.target.value)}
         />
-        <label id="participants">Participants:</label>
+        <label id="participants" className="text-white">Participants:</label>
         <input
           type="text"
           name="participants"
@@ -99,7 +99,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventParticipants}
           onChange={(e) => setEvevntParticipants(e.target.value)}
         />
-        <label id="price">Price:</label>
+        <label id="price" className="text-white">Price:</label>
         <input
           type="number"
           name="price"
@@ -108,7 +108,7 @@ const NewEvent = ({ user, setOpenModal, getUserEvents }) => {
           value={eventPrice}
           onChange={(e) => setEventPrice(e.target.value)}
         />
-        <label id="image">Image:</label>
+        <label id="image" className="text-white">Image:</label>
         <input
           type="url"
           name="image"

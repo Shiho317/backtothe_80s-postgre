@@ -66,14 +66,14 @@ const Login = () => {
           Log in
         </button>
       </form>
-      <div className="absolute top-50 right-10 flex flex-col items-center justify-center gap-6">
+      <div className="absolute top-3/4 right-2 gap-2 flex flex-col items-center justify-center lg:gap-6 lg:top-50 lg:right-10">
         <Link to="/signup">
-          <button className="bg-none border border-black bg-white py-2 w-36 text-xl hover:bg-red-500">
+          <button className="bg-none border border-black bg-white py-1 w-24 text-lg lg:text-xl hover:bg-red-500 lg:py-2 lg:w-36">
             Sign Up
           </button>
         </Link>
         <Link to="/">
-          <button className="bg-none border border-black bg-white py-2 w-36 text-xl hover:bg-red-500">
+          <button className="bg-none border border-black bg-white py-1 w-24 text-lg lg:text-xl hover:bg-red-500 lg:py-2 lg:w-36">
             Home
           </button>
         </Link>

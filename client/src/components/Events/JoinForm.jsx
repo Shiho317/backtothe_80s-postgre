@@ -30,12 +30,12 @@ const JoinForm = ({ setOpenModal, event, getEventInfo }) => {
   return (
     <div className="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center bg-gray-400/70">
       <div
-        className="absolute top-28 right-96 text-white text-5xl cursor-pointer"
+        className="absolute top-4 right-4 lg:top-28 lg:right-96 text-white text-5xl cursor-pointer"
         onClick={() => setOpenModal(false)}
       >
         <IoIosCloseCircle />
       </div>
-      <form className="flex flex-col gap-2 w-1/3 p-3" onSubmit={joinHandler}>
+      <form className="flex flex-col gap-2 w-11/12 md:w-2/3 lg:w-1/3 lg:p-3" onSubmit={joinHandler}>
         <label id="event" className="text-white">Event Title:</label>
         <h3 className="h-10 px-1 text-lg flex items-center bg-gray-200/50">{event.title}</h3>
         <label id="username" className="text-white">User Name:</label>

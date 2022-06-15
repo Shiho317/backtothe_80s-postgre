@@ -5,8 +5,6 @@ import { AppContext } from "../../App";
 import { IoMdArrowDropleftCircle } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 import { CgList } from 'react-icons/cg';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import ShowList from "./ShowList";
 import EditEvent from "./EditEvent";
 
@@ -45,15 +43,15 @@ const EventManage = () => {
     <div className="relative bg-manage-event bg-cover bg-center w-full h-screen flex items-center justify-center">
       <Link
         to={`/account/${user.id}`}
-        className="absolute top-10 left-20 text-white text-5xl hover:text-red-500 cursor-pointer"
+        className="absolute top-4 left-4 md:top-10 md:left-20 text-white text-5xl hover:text-red-500 cursor-pointer"
       >
         <IoMdArrowDropleftCircle />
       </Link>
       {event && (
-        <div className="max-w-2xl m-auto bg-white/80 rounded-md overflow-hidden">
-          {<img src={event.image} alt="event-pic" /> || <Skeleton/>}
+        <div className="w-11/12 bg-white/80 rounded-md overflow-hidden md:max-w-lg m-auto lg:max-w-2xl">
+          <img src={event.image} alt="event-pic" />
           <div className="relative p-2">
-            <h1 className="text-3xl underline text-center">{event.title}</h1>
+            <h1 className="text-xl md:text-3xl underline text-center">{event.title}</h1>
             <p>Desc: {event.sub}</p>
             <p>Date: {event.date}</p>
             <p>Start: {event.time}</p>

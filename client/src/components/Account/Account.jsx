@@ -45,7 +45,7 @@ const Account = () => {
           {user.name}'s Hosting Events
         </h1>
       )}
-      <ul className="mt-4 flex flex-col gap-6 lg:flex-row flex-wrap">
+      <ul className="flex flex-col items-center justify-start w-full h-3/4 gap-4 overflow-y-auto md:flex-row md:flex-wrap md:mt-4 md:items-start md:p-4">
         {userEvents.length > 0 ? (
           userEvents.map((event) => (
             <UserEvent event={event} user={user} key={event.id} />
@@ -54,7 +54,7 @@ const Account = () => {
           <p className="text-white">Your hosting events are empty.</p>
         )}
       </ul>
-      <div className="absolute top-1/2 -translate-y-1/2 right-10 flex flex-col justify-center gap-6">
+      <div className="absolute gap-2 bottom-2 right-2 flex flex-col justify-center lg:gap-6 lg:top-1/2 lg:-translate-y-1/2 lg:right-10">
         <button
           className="bg-none border border-black bg-white py-2 w-10 text-xl hover:bg-red-500 flex justify-center"
           onClick={() => setOpenModal(true)}
@@ -62,13 +62,13 @@ const Account = () => {
           <MdPostAdd />
         </button>
         <button
-          className="bg-none border border-black bg-white py-2 w-36 text-xl hover:bg-red-500"
+          className="bg-none border border-black bg-white py-1 w-24 text-lg lg:text-xl hover:bg-red-500 lg:py-2 lg:w-36"
           onClick={logoutHandler}
         >
           Log Out
         </button>
         <Link to="/">
-          <button className="bg-none border border-black bg-white py-2 w-36 text-xl hover:bg-red-500">
+          <button className="bg-none border border-black bg-white py-1 w-24 text-lg lg:text-xl hover:bg-red-500 lg:py-2 lg:w-36">
             Home
           </button>
         </Link>

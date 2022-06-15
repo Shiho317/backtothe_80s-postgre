@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 const Card = ({ data }) => {
   const newDate = new Date();
@@ -24,8 +22,8 @@ const Card = ({ data }) => {
   }, [today, data]);
 
   return (
-    <div className="relative w-11/12 m-auto shadow-md rounded overflow-hidden bg-white lg:w-80">
-      {<img src={data.image} alt="event" /> || <Skeleton />}
+    <div className="relative w-11/12 shadow-md rounded overflow-hidden bg-white md:w-80">
+      <img src={data.image} alt="event" />
       <div className="p-2">
         <h1 className="text-xl underline">{data.title}</h1>
         <p className="text-sm">{data.sub}</p>

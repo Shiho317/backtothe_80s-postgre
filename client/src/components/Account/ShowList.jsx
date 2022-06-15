@@ -22,12 +22,12 @@ const ShowList = ({setShowList, event, user}) => {
   return (
     <div className="absolute top-0 left-0 w-full h-screen flex items-center justify-center bg-gray-400/70">
     <div
-    className="absolute top-28 right-96 text-white text-5xl cursor-pointer"
+    className="absolute top-4 right-4 lg:top-28 lg:right-96 text-white text-5xl cursor-pointer"
     onClick={() => setShowList(false)}
   >
     <IoIosCloseCircle />
   </div>
-      <div className='w-1/3 p-3 bg-white rounded-md'>
+      <div className='w-11/12 p-3 bg-white rounded-md md:w-2/3 lg:w-1/3'>
         <table className='w-full'>
           <thead>
             <tr>
