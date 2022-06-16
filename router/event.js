@@ -3,7 +3,7 @@ const db = require("../services/db");
 const { v4: uuidv4 } = require("uuid");
 
 router.get("/events", (req, res) => {
-  db.query("SELECT * FROM events", (err, result) => {
+  db.query("SELECT * FROM events ORDER BY date DESC", (err, result) => {
     if (err) {
       console.log(err.message);
     }
